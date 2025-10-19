@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Risen Christ Redeemer - Booking</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      background-color: #f7f4f1;
+      color: #2d2a26;
+      font-family: "Times New Roman", serif;
+      font-size: 24px;
+      line-height: 1.8;
+    }
+
+    header {
+      background-color: #5c3d2e;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 60px;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 15px; /* space between logo and text */
+    }
+
+    .header-left h1 {
+      font-size: 40px;
+      font-weight: bold;
+    }
+
+    .logo-img {
+      height: 60px;
+      width: auto;
+    }
+
+    header h1 { font-size: 40px; font-weight:bold; }
+    nav a { color:white; text-decoration:none; margin:0 7px; font-size:15px; }
+    nav a:hover { text-decoration:underline; }
+
+    .container {
+      width: 90%;
+      max-width: 1000px;
+      margin: 60px auto;
+      background: white;
+      padding: 50px;
+      border-radius: 16px;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+      text-align: left;
+    }
+
+    h2 { color:#5c3d2e; margin-bottom:20px; font-size:30px; }
+    .options { display:flex; flex-wrap:wrap; gap:15px; margin-bottom:30px; }
+    /* Fix alignment of radio buttons and labels */
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 30px;
+  justify-content: flex-start;
+}
+
+.option-btn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  border: 1px solid #5c3d2e;
+  border-radius: 10px;
+  background-color: #d1bfa3;
+  padding: 12px 22px;
+  cursor: pointer;
+  font-size: 20px;
+  width: 290px; /* 🔸 fixed width so all boxes are equal */
+  height: 70px; /* 🔸 consistent height for all buttons */
+  line-height: 1.2;
+  transition: background 0.3s;
+}
+
+.option-btn:hover {
+  background-color: #c5ae8e; /* hover color for nice feedback */
+}
+
+.option-btn input[type="radio"] {
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  accent-color: #5c3d2e;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+
+
+
+    .calendar-container { display:flex; align-items:flex-start; gap:25px; flex-wrap:wrap; margin-bottom:30px; }
+    .calendar { border:2px solid #d1bfa3; border-radius:10px; padding:10px; }
+    .calendar table { width:100%; text-align:center; border-collapse:collapse; }
+    .calendar th { color:#5c3d2e; }
+    .calendar td { padding:8px; cursor:pointer; border-radius:5px; }
+    .calendar td.disabled { color:#ccc; pointer-events:none; }
+    .calendar td.active { background-color:#5c3d2e; color:white; }
+
+    .time-buttons button {
+      background-color:#d1bfa3; border:none; padding:10px 20px; margin:5px; border-radius:10px; cursor:pointer; transition:0.3s; font-size:18px;
+    }
+    .time-buttons button.active { background-color:#5c3d2e; color:white; }
+
+    input, textarea {
+      width:100%; padding:12px; border:1px solid #5c3d2e; border-radius:5px; margin-bottom:15px; font-size:20px; font-family:"Times New Roman", serif;
+    }
+
+    .book-btn {
+      display:block; margin:20px auto; background-color:#5c3d2e; color:white; border:none; border-radius:30px; padding:15px 35px; font-size:22px; cursor:pointer; transition:0.3s;
+    }
+    .book-btn:hover { background-color:#7a523e; }
+
+    footer {
+      background-color: #5c3d2e; color: white; padding: 50px 60px; display: flex; justify-content: space-between; flex-wrap: wrap; font-size: 20px; line-height:1.7;
+    }
+    footer .logo { width:40%; }
+    footer .links, footer .contact { width:25%; }
+    footer a { color:white; text-decoration:none; display:block; margin-top:8px; }
+    footer a:hover { text-decoration:underline; }
+
+    .social-icons {
+  margin-top: 25px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+  justify-content: flex-start; /* move icons to the left */
+}
+.footer-box .social-icons {
+  justify-content: flex-start !important;
+  text-align: left !important;
+}
+.footer-box {
+  text-align: left;
+}
+
+.footer-box .social-icons {
+  justify-content: flex-start;
+}
+
+
+
+.social-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 40%;
+  object-fit: cover;
+  background-color: transparent;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.social-img:hover {
+  transform: scale(1.1);
+  opacity: 0.8;
+}
+
+
+    @media (max-width:900px){
+  header {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .container {
+    padding: 20px;
+  }
+  footer {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+}
+
+
+    .modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color: rgba(0,0,0,0.6); justify-content:center; align-items:center; z-index:10; }
+    .modal-content { background-color:#fff; padding:30px; border-radius:15px; width:400px; text-align:center; box-shadow:0 8px 18px rgba(0,0,0,0.25);}
+    .modal-content button { background-color:#5c3d2e; color:white; border:none; border-radius:8px; padding:10px 20px; margin:10px 5px; cursor:pointer; font-size:20px; }
+    .modal-content button.cancel { background-color:#b0a089; }
+     .footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.footer-img {
+  width: 60px; /* Match header logo height */
+  height: auto;
+  object-fit: contain;
+}
+  </style>
+</head>
+<body>
+
+  <!-- BACKGROUND MUSIC -->
+  <audio autoplay loop>
+    <source src="Oceans__Instrumental_(256k).mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-left">
+      <img src="LOGO JUST REMOVE BG.png" alt="Logo" class="logo-img">
+      <h1>The Risen Christ Redeemer</h1>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="location.html">Location</a>
+      <a href="Events&Announcement.html">Events & Announcements</a>
+      <a href="reviews.html">Reviews</a>
+      <a href="moreinfo.html">More Info</a>
+    </nav>
+  </header>
+
+  <!-- MAIN CONTAINER -->
+  <div class="container">
+    <h2>Select Service</h2>
+    <div class="options">
+      <label class="option-btn"><input type="radio" name="service" value="Guided Tour 1 Hour">Guided Tour 1 Hour</label>
+      <label class="option-btn"><input type="radio" name="service" value="Assistance for Persons with Disabilities">Assistance for Persons with Disabilities</label>
+    </div>
+
+    <h2>Select Number of Group (For Guided Tours only)</h2>
+    <div class="options">
+      <label class="option-btn"><input type="radio" name="group" value="1-5">Individual or Small Group (1–5 people)</label>
+      <label class="option-btn"><input type="radio" name="group" value="6-10">Small Group (6–10 people)</label>
+      <label class="option-btn"><input type="radio" name="group" value="11-20">Medium Group (11–20 people)</label>
+      <label class="option-btn"><input type="radio" name="group" value="21-30">Large Group (21–30 people)</label>
+      <label class="option-btn"><input type="radio" name="group" value="31-50">Extra Large Group (31–50 people)</label>
+    </div>
+
+    <h2>Select Time</h2>
+    <div class="calendar-container">
+      <div class="calendar">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+          <button id="prevMonth">&lt; Prev</button>
+          <span id="monthYear"></span>
+          <button id="nextMonth">Next &gt;</button>
+        </div>
+        <table id="calendar"></table>
+      </div>
+      <div class="time-buttons">
+        <button>9:00 AM</button>
+        <button>10:00 AM</button>
+        <button>11:00 AM</button>
+        <button>1:00 PM</button>
+        <button>2:00 PM</button>
+        <button>3:00 PM</button>
+        <button>4:00 PM</button>
+      </div>
+    </div>
+
+    <h2>Add Your Details</h2>
+    <input type="text" id="name" placeholder="Please put a name.">
+    <input type="email" id="email" placeholder="Please put a valid email address.">
+    <input type="tel" id="phone" placeholder="Please enter a valid phone number.">
+    <textarea id="note" placeholder="Write your note here. (Optional)"></textarea>
+
+    <button class="book-btn" id="bookBtn">Book Now</button>
+  </div>
+
+  <!-- TERMS MODAL -->
+  <div class="modal" id="termsModal">
+    <div class="modal-content">
+      <h3>Terms and Conditions</h3>
+      <p>By proceeding, you agree to follow the rules and regulations of The Risen Christ Redeemer.</p>
+      <button id="acceptTerms">I Agree</button>
+      <button class="cancel" id="cancelTerms">Cancel</button>
+    </div>
+  </div>
+
+  <!-- BOOKING INFO MODAL -->
+  <div class="modal" id="infoModal">
+    <div class="modal-content">
+      <h3>Booking Information</h3>
+      <p id="bookingSummary"></p>
+      <button onclick="closeAll()">Close</button>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+  <div class="logo">
+  <div class="footer-logo">
+    <img src="LOGO JUST REMOVE BG.png" alt="Footer Logo" class="footer-img">
+    <h3>The Risen Christ Redeemer</h3>
+  </div>
+  <p>The Pilgrimage Destination of Rosario, Batangas</p>
+
+  <div class="social-icons">
+      <a href="https://www.facebook.com/profile.php?id=61581121648890" target="_blank">
+        <img src="fblogo-removebg-preview.png" alt="Facebook" class="social-img">
+      </a>
+      <a href="https://x.com/risenredeemer_" target="_blank">
+        <img src="xlogo-removebg-preview.png" alt="Twitter" class="social-img">
+      </a>
+      <a href="https://www.instagram.com/the_risen_christ_redeemer" target="_blank">
+        <img src="instagramlogo-removebg-preview.png" alt="Instagram" class="social-img">
+      </a>
+      <a href="https://www.tiktok.com/@therisenchristred" target="_blank">
+        <img src="tiktoklogos-removebg-preview.png" alt="TikTok" class="social-img">
+      </a>
+      <a href="https://www.youtube.com/@therisenchristredeemer" target="_blank">
+        <img src="yt_logo-removebg-preview.png" alt="YouTube" class="social-img">
+      </a>
+    </div>
+  </div>
+
+  <div class="links">
+    <h4>Pages</h4>
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="location.html">Location</a>
+    <a href="Events&Announcement.html">Events & Announcements</a>
+    <a href="Reviews.html">Reviews</a>
+    <a href="moreinfo.html">More Info</a>
+  </div>
+
+  <div class="contact">
+    <h4>Contact</h4>
+    <p>R6X4+9RF, G. Recto St., Rosario, Batangas</p>
+    <p>therisenchristredeemer@gmail.com</p>
+    <p>(123) 456 - 7890</p>
+  </div>
+</footer>
+
+
+  <!-- JAVASCRIPT -->
+  <script>
+    const bookBtn = document.getElementById('bookBtn');
+    const termsModal = document.getElementById('termsModal');
+    const infoModal = document.getElementById('infoModal');
+    const acceptTerms = document.getElementById('acceptTerms');
+    const cancelTerms = document.getElementById('cancelTerms');
+    const bookingSummary = document.getElementById('bookingSummary');
+
+    let selectedDate = null;
+    let selectedTime = null;
+
+    // CALENDAR VARIABLES
+    const calendarEl = document.getElementById('calendar');
+    const monthYearEl = document.getElementById('monthYear');
+    const prevMonthBtn = document.getElementById('prevMonth');
+    const nextMonthBtn = document.getElementById('nextMonth');
+    const today = new Date();
+    let currentMonth = today.getMonth();
+    let currentYear = today.getFullYear();
+
+    function generateCalendar(month, year) {
+      const firstDay = new Date(year, month, 1).getDay();
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+      const monthNames = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+      monthYearEl.innerText = `${monthNames[month]} ${year}`;
+
+      let table = `<tr><th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th></tr><tr>`;
+      for (let i = 0; i < firstDay; i++) table += `<td></td>`;
+      for (let day=1; day<=daysInMonth; day++){
+        const dateObj = new Date(year, month, day);
+        const disabled = dateObj < today ? 'disabled' : '';
+        table += `<td class="${disabled}" data-date="${year}-${month+1}-${day}">${day}</td>`;
+        if ((firstDay + day) % 7 === 0) table += `</tr><tr>`;
+      }
+      table += `</tr>`;
+      calendarEl.innerHTML = table;
+
+      document.querySelectorAll('#calendar td').forEach(td=>{
+        if(!td.classList.contains('disabled')){
+          td.addEventListener('click', ()=>{
+            document.querySelectorAll('#calendar td').forEach(d=>d.classList.remove('active'));
+            td.classList.add('active');
+            selectedDate = td.getAttribute('data-date');
+          });
+        }
+      });
+    }
+
+    // NAVIGATION
+    prevMonthBtn.addEventListener('click', ()=>{
+      currentMonth--;
+      if(currentMonth<0){ currentMonth=11; currentYear--; }
+      generateCalendar(currentMonth,currentYear);
+    });
+    nextMonthBtn.addEventListener('click', ()=>{
+      currentMonth++;
+      if(currentMonth>11){ currentMonth=0; currentYear++; }
+      generateCalendar(currentMonth,currentYear);
+    });
+
+    // TIME SELECTION
+    document.querySelectorAll('.time-buttons button').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        document.querySelectorAll('.time-buttons button').forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        selectedTime = btn.innerText;
+      });
+    });
+
+    generateCalendar(currentMonth,currentYear);
+
+    // BOOKING BUTTON
+    bookBtn.addEventListener('click', ()=>{
+      termsModal.style.display = 'flex';
+    });
+
+    acceptTerms.addEventListener('click', ()=>{
+      termsModal.style.display = 'none';
+      const service = document.querySelector('input[name="service"]:checked')?.value || 'Not selected';
+      const group = document.querySelector('input[name="group"]:checked')?.value || 'Not selected';
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const phone = document.getElementById('phone').value;
+      const note = document.getElementById('note').value;
+
+      bookingSummary.innerHTML = `
+        <strong>Service:</strong> ${service}<br>
+        <strong>Group:</strong> ${group}<br>
+        <strong>Date:</strong> ${selectedDate || 'Not selected'}<br>
+        <strong>Time:</strong> ${selectedTime || 'Not selected'}<br>
+        <strong>Name:</strong> ${name}<br>
+        <strong>Email:</strong> ${email}<br>
+        <strong>Phone:</strong> ${phone}<br>
+        <strong>Note:</strong> ${note || 'None'}
+      `;
+      infoModal.style.display='flex';
+    });
+
+    cancelTerms.addEventListener('click', ()=>{ termsModal.style.display='none'; });
+    function closeAll(){ infoModal.style.display='none'; }
+  </script>
+
+</body>
+</html>
